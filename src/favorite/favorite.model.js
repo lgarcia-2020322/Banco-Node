@@ -15,7 +15,8 @@ const favoriteSchema = Schema(
     accountNumber: {
       type: String,
       required: [true, 'Target account number is required'],
-      length: [10, 'Account number must be exactly 10 digits']
+      minLength: [10, 'Account number must be exactly 10 digits'],
+      maxLength: [10, 'Account number must be exactly 10 digits']
     },
     bankName: {
       type: String,
@@ -23,9 +24,9 @@ const favoriteSchema = Schema(
       maxLength: [100, 'Bank name must be at most 100 characters']
     },
     currency: {
-      type: String,
-      required: [true, 'Currency is required'],
-      enum: ['GTQ', 'USD', 'EUR'],
+      type: Schema.Types.ObjectId,
+      ref: 'Currency',
+      required: [true, 'Currency is required']
     }
   },
   { timestamps: true }

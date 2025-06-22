@@ -5,26 +5,21 @@ const productSchema = Schema(
     name: {
       type: String,
       required: [true, 'Product name is required'],
-      enum: ['savings_account', 'checking_account', 'credit_card', 'debit_card', 'loan'],
+      maxLength: [50, 'Product name must be at most 50 characters']
     },
     description: {
       type: String,
       maxLength: [200, 'Description must be at most 200 characters']
     },
+    price: {
+      type: Number,
+      required: [true, 'Price is required'],
+      min: [0.01, 'Price must be greater than 0']
+    },
     currency: {
-      type: String,
-      required: [true, 'Currency is required'],
-      enum: ['GTQ', 'USD', 'EUR'],
-    },
-    interestRate: {
-      type: Number,
-      min: 0,
-      default: 0,
-    },
-    maintenanceFee: {
-      type: Number,
-      min: 0,
-      default: 0,
+      type: Schema.Types.ObjectId,
+      ref: 'Currency',
+      required: [true, 'Currency is required']
     },
     active: {
       type: Boolean,
