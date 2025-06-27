@@ -37,7 +37,7 @@ const purchaseSchema = Schema(
     },
     referenceCode: {
       type: String,
-      required: true,
+      required: false,
       unique: true,
     },
   },

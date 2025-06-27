@@ -24,7 +24,7 @@ const movementSchema = Schema(
     },
     balanceAfter: {
       type: Number,
-      required: [true, 'Balance after movement is required'],
+      required: false,
     },
     referenceId: {
       type: Schema.Types.ObjectId,
@@ -43,4 +43,3 @@ const movementSchema = Schema(
 )
 
 export default model('Movement', movementSchema)
-// Este modelo de movimiento registra transacciones financieras de clientes, incluyendo depósitos, retiros, transferencias y compras.
