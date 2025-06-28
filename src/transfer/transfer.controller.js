@@ -93,32 +93,18 @@ export const cancelTransfer = async (req, res) => {
     const { id } = req.params
     const { confirmation } = req.body
 
-    if (!confirmation || (confirmation !== 'YES' && confirmation !== 'NO')) {
+    if (!confirmation || confirmation !== 'YES') {
       return res.status(400).send({
         success: false,
-        message: 'Confirmation is required and must be either "YES" or "NO"',
-      })
-    }
-
-    if (confirmation === 'NO') {
-      return res.send({
-        success: false,
-        message: 'Transfer cancellation aborted by user confirmation',
+        message: 'Confirmation not received. Please confirm by setting confirmation: "YES".',
       })
     }
 
     const transfer = await Transfer.findById(id)
-
     if (!transfer) {
       return res.status(404).send({
         success: false,
         message: 'Transfer not found',
-      })
-    }
-    if (transfer.status === 'completed') {
-      return res.status(400).send({
-        success: false,
-        message: 'Cannot cancel a completed transfer',
       })
     }
 
@@ -128,13 +114,13 @@ export const cancelTransfer = async (req, res) => {
     return res.send({
       success: true,
       message: 'Transfer cancelled successfully',
+      transfer,
     })
   } catch (error) {
-    console.error(error)
     return res.status(500).send({
       success: false,
       message: 'Error cancelling transfer',
-      error,
+      error: error.message,
     })
   }
 }

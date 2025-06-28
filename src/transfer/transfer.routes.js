@@ -4,6 +4,7 @@
 import { Router } from 'express'
 
 import {
+    cancelTransfer,
     createTransfer,
     getAllTransfers,
     getTransfer,
@@ -23,7 +24,7 @@ api.post(
 
 api.get(
     '/getAllTransfers',
-    [validateJwt, isAdmin],
+    [validateJwt],
     getAllTransfers
 )
 
@@ -37,6 +38,12 @@ api.put(
     '/updateTransfer/:id',
     [validateJwt, isAdmin],
     updateTransfer
+)
+
+api.put(
+    '/cancelTransfer/:id',
+    [validateJwt, isAdmin],
+    cancelTransfer
 )
 
 export default api

@@ -9,6 +9,10 @@ import { limiter } from '../middlewares/rate.limit.js'
 import depositRoutes from '../src/deposit/deposit.routes.js'
 import transferRoutes from '../src/transfer/transfer.routes.js'
 import exchangeRoutes from '../src/currency/currency.routes.js'
+import authRoutes from '../src/auth/auth.routes.js'
+import clientRoutes from '../src/client/client.routes.js'
+import userRoutes from '../src/user/user.routes.js'
+
 
 dotenv.config();
 const configs = (app)=>{
@@ -24,9 +28,11 @@ const configs = (app)=>{
 const routes = (app)=>{
     //app.use('/v1/auth', authRoutes)
     app.use('/v1/deposit', depositRoutes)
-    app.use('/v1/exchangeRate', depositRoutes)
-    app.use('/v1/tranfer', exchangeRoutes)
-
+    app.use('/v1/exchangeRate', exchangeRoutes)
+    app.use('/v1/transfer', transferRoutes)
+    app.use('/v1/auth', authRoutes)
+    app.use('/v1/client', clientRoutes)
+    app.use('/v1/users', userRoutes)
 }
 
 export const initServer = async () => {
