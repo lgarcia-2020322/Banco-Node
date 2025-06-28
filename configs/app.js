@@ -6,6 +6,9 @@ import morgan from 'morgan'
 import helmet from 'helmet' 
 import cors from 'cors' 
 import { limiter } from '../middlewares/rate.limit.js'
+import depositRoutes from '../src/deposit/deposit.routes.js'
+import transferRoutes from '../src/transfer/transfer.routes.js'
+import exchangeRoutes from '../src/currency/currency.routes.js'
 
 dotenv.config();
 const configs = (app)=>{
@@ -20,6 +23,10 @@ const configs = (app)=>{
 
 const routes = (app)=>{
     //app.use('/v1/auth', authRoutes)
+    app.use('/v1/deposit', depositRoutes)
+    app.use('/v1/exchangeRate', depositRoutes)
+    app.use('/v1/tranfer', exchangeRoutes)
+
 }
 
 export const initServer = async () => {
