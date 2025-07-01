@@ -8,6 +8,7 @@ import cors from 'cors'
 import { limiter } from '../middlewares/rate.limit.js'
 import movementRoutes from '../src/movement/movement.routes.js'
 import purchaseRoutes from '../src/purchase/purchase.routes.js'
+import reportRoutes from '../src/report/report.routes.js'
 
 dotenv.config();
 const configs = (app)=>{
@@ -23,6 +24,7 @@ const configs = (app)=>{
 const routes = (app)=>{
     app.use('/v1/movement', movementRoutes)
     app.use('/v1/purchase', purchaseRoutes) 
+    app.use('/v1/report', reportRoutes)
 }
 
 export const initServer = async () => {

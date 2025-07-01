@@ -26,10 +26,6 @@ const movementSchema = Schema(
       type: Number,
       required: false,
     },
-    referenceId: {
-      type: Schema.Types.ObjectId,
-      required: false, // Referencia opcional al origen de la transacción
-    },
     description: {
       type: String,
       maxLength: [200, 'Description must be at most 200 characters'],
