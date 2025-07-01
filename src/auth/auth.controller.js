@@ -138,7 +138,7 @@ export const createDefaultAdmin = async () => {
       dpi: '1234567890123',
       username: 'ADMINB',
       email: 'admin@banco.com',
-      password: await encrypt('ADMINB'),
+      password: await encrypt('ADMINb!123'),
       phone: '12345678',
       address: 'Ciudad',
       job: 'Administrador',

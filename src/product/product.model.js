@@ -17,9 +17,9 @@ const productSchema = Schema(
       min: [0.01, 'Price must be greater than 0']
     },
     currency: {
-      type: Schema.Types.ObjectId,
-      ref: 'Currency',
-      required: [true, 'Currency is required']
+      type: String,
+      required: [true, 'Currency is required'],
+      enum: ['USD', 'EUR', 'PEN'],
     },
     active: {
       type: Boolean,
