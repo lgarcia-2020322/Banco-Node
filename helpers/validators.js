@@ -29,6 +29,9 @@ export const registerClientValidator = [
     .isLength({ min: 8, max: 13 }),
   body('address').notEmpty().withMessage('Address is required'),
   body('job').notEmpty().withMessage('Job is required'),
+  body('currency')
+  .notEmpty().withMessage('Currency is required')
+  .isIn(['GTQ', 'USD', 'EUR', 'PEN', 'JPY']).withMessage('Invalid currency'),
   body('monthlyIncome')
     .notEmpty().withMessage('Monthly income is required')
     .isFloat({ min: 100 }).withMessage('Monthly income must be at least Q100'),
@@ -187,4 +190,26 @@ export const exchangeRateValidator = [
     .notEmpty()
     .isFloat({ min: 0 }),
   validateErrors,
+]
+
+export const favoriteValidator = [
+  body('owner', 'Owner is required').notEmpty(),
+  body('alias', 'Alias is required').notEmpty(),
+  body('accountNumber')
+    .notEmpty().withMessage('Account number is required')
+    .isLength({ min: 10, max: 10 }).withMessage('Must be exactly 10 digits'),
+  body('bankName', 'Bank name is required').notEmpty(),
+  body('currency', 'Currency is required').notEmpty(),
+  validateErrors
+]
+
+export const createProductValidator = [
+  body('name', 'Product name is required').notEmpty(),
+  body('price', 'Price must be a number greater than 0')
+    .notEmpty()
+    .isFloat({ gt: 0 }),
+  body('currency')
+    .notEmpty().withMessage('Currency is required')
+    .isIn(['USD', 'EUR', 'PEN']),
+  validateErrors
 ]

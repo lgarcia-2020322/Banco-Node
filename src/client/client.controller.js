@@ -5,11 +5,23 @@ import User from '../user/user.model.js'
 // Obtener todos los clientes
 export const getClients = async (req, res) => {
   try {
-    const clients = await Client.find().populate('user', '-password -__v')
-    return res.send({ success: true, clients })
+    const clients = await Client.find()
+      .populate('user', '-password -__v')
+      .select('-__v')
+
+    if (clients.length === 0) {
+      return res.status(404).send({ message: 'No clients found', success: false })
+    }
+
+    return res.send({
+      message: 'Clients found',
+      success: true,
+      total: clients.length,
+      clients
+    })
   } catch (err) {
     console.error(err)
-    return res.status(500).send({ success: false, message: 'Error getting clients', error: err })
+    return res.status(500).send({ message: 'Error retrieving clients', error: err })
   }
 }
 
@@ -73,20 +85,22 @@ export const deleteClient = async (req, res) => {
 // Obtener perfil del cliente autenticado
 export const getProfileClient = async (req, res) => {
   try {
-    const { uid } = req.user
-    const user = await User.findById(uid).select('-password -__v')
-    const client = await Client.findOne({ user: uid })
+    const userId = req.user.uid
+    const client = await Client.findOne({ user: userId })
+      .populate('user', '-password -__v')
+      .select('-__v')
 
-    if (!user || !client) return res.status(404).send({ success: false, message: 'Client not found' })
+    if (!client) {
+      return res.status(404).send({ success: false, message: 'Client not found' })
+    }
 
     return res.send({
+      message: 'Client profile found',
       success: true,
-      message: `Welcome ${user.name}`,
-      user,
       client
     })
   } catch (err) {
     console.error(err)
-    return res.status(500).send({ success: false, message: 'Error getting profile', error: err })
+    return res.status(500).send({ message: 'Error fetching profile', error: err })
   }
 }

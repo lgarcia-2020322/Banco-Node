@@ -42,6 +42,11 @@ const clientSchema = Schema(
       required: [true, 'Monthly income is required'],
       min: [100, 'Income must be at least Q100']
     },
+    currency: {
+      type: String,
+      required: [true, 'Currency is required'],
+      enum: ['GTQ', 'USD', 'EUR', 'PEN', 'JPY']
+    },
     balance: {
       type: Number,
       default: 0

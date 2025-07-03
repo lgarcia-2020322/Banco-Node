@@ -1,10 +1,23 @@
 //auth.controller.js
 import User from '../user/user.model.js'
+import Client from '../client/client.model.js'
 import { encrypt, checkPassword } from '../../utils/encrypt.js'
 import { generateJwt } from '../../utils/jwt.js'
-import Client from '../client/client.model.js'
 
-// Registrar cliente (admin)
+// Generador único de número de cuenta
+const generateUniqueAccountNumber = async () => {
+  let accountNumber
+  let exists = true
+
+  while (exists) {
+    accountNumber = Math.floor(1000000000 + Math.random() * 9000000000).toString()
+    exists = await Client.findOne({ accountNumber })
+  }
+
+  return accountNumber
+}
+
+// Registrar cliente (solo admin)
 export const registerClient = async (req, res) => {
   try {
     const data = req.body
@@ -12,13 +25,8 @@ export const registerClient = async (req, res) => {
     if (data.monthlyIncome < 100)
       return res.status(400).send({ message: 'Monthly income must be at least Q100' })
 
-    // Generar número de cuenta único
-    let accountNumber
-    do {
-      accountNumber = Math.floor(1000000000 + Math.random() * 9000000000).toString()
-    } while (await Client.findOne({ accountNumber }))
+    const accountNumber = await generateUniqueAccountNumber()
 
-    // Crear el usuario
     const newUser = new User({
       name: data.name,
       surname: data.surname,
@@ -30,7 +38,6 @@ export const registerClient = async (req, res) => {
 
     const savedUser = await newUser.save()
 
-    // Crear el cliente con referencia al usuario
     const newClient = new Client({
       user: savedUser._id,
       dpi: data.dpi,
@@ -38,6 +45,7 @@ export const registerClient = async (req, res) => {
       address: data.address,
       job: data.job,
       monthlyIncome: data.monthlyIncome,
+      currency: data.currency,
       accountNumber
     })
 
@@ -53,7 +61,6 @@ export const registerClient = async (req, res) => {
     return res.status(500).send({ message: 'Register error', error: err })
   }
 }
-
 
 // Login cliente
 export const loginClient = async (req, res) => {

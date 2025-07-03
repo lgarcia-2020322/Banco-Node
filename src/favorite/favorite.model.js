@@ -24,9 +24,13 @@ const favoriteSchema = Schema(
       maxLength: [100, 'Bank name must be at most 100 characters']
     },
     currency: {
-      type: Schema.Types.ObjectId,
-      ref: 'Currency',
-      required: [true, 'Currency is required']
+      type: String,
+      required: [true, 'Currency is required'],
+      enum: ['USD', 'EUR', 'PEN'],
+    },
+    status: {
+      type: Boolean,
+      default: true
     }
   },
   { timestamps: true }
