@@ -18,8 +18,10 @@ const generateUniqueAccountNumber = async () => {
 }
 
 // Registrar cliente (solo admin)
+
 export const registerClient = async (req, res) => {
   try {
+    console.log(req.body)
     const data = req.body
 
     if (data.monthlyIncome < 100)
