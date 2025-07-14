@@ -4,7 +4,10 @@ import User from './user.model.js'
 // Obtener todos los usuarios que NO son administradores
 export const getUsers = async (req, res) => {
   try {
-    const users = await User.find({ role: { $ne: 'ADMIN' } }).select('-password -__v')
+      const users = await User.find({
+      role: { $ne: 'ADMIN' },
+      status: true
+    }).select('-password -__v')
     return res.send({ success: true, users })
   } catch (err) {
     console.error(err)
@@ -67,5 +70,31 @@ export const deleteUser = async (req, res) => {
   } catch (err) {
     console.error(err)
     return res.status(500).send({ success: false, message: 'Error disabling user', error: err })
+  }
+}
+export const searchUsersByName = async (req, res) => {
+  try {
+    const { name } = req.body
+
+    if (!name || name.trim().length === 0)
+      return res.status(400).send({ success: false, message: 'Name is required' })
+
+    const regex = new RegExp(name, 'i') // búsqueda insensible a mayúsculas
+    const users = await User.find({
+      role: { $ne: 'ADMIN' },
+      $or: [
+        { name: regex },
+        { surname: regex },
+        { username: regex }
+      ]
+    }).select('-password -__v')
+
+    if (!users.length)
+      return res.status(404).send({ success: false, message: 'No users found' })
+
+    return res.send({ success: true, users })
+  } catch (err) {
+    console.error(err)
+    return res.status(500).send({ success: false, message: 'Error searching users', error: err })
   }
 }

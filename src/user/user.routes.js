@@ -4,7 +4,8 @@ import {
   getUsers,
   getUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  searchUsersByName 
 } from '../user/user.controller.js'
 
 import {
@@ -31,7 +32,11 @@ api.get(
   [validateJwt, isAdmin],
   getUserById
 )
-
+api.post(
+  '/searchByName',
+  [validateJwt, isAdmin],
+  searchUsersByName
+)
 // Editar usuario (excepto password y DPI)
 api.put(
   '/:id',

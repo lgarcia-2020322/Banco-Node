@@ -1,0 +1,27 @@
+[33m1cc1f12[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{0}: checkout: moving from develop to develop
+[33m1cc1f12[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{1}: checkout: moving from ft/lgarcia to develop
+[33m82cfec3[m[33m ([m[1;32mft/lgarcia[m[33m)[m HEAD@{2}: commit: Cambios en auth.controller
+[33m1091c62[m HEAD@{3}: commit: se agrega lo que falta de Luis v
+[33m8aae722[m HEAD@{4}: commit: holi
+[33m87881b6[m[33m ([m[1;31morigin/ft/lgarcia[m[33m, [m[1;32mft/lgarcia-2020322[m[33m)[m HEAD@{5}: merge ft/lgarcia-2020322: Fast-forward
+[33m1e08ce0[m HEAD@{6}: checkout: moving from ft/lgarcia-2020322 to ft/lgarcia
+[33m87881b6[m[33m ([m[1;31morigin/ft/lgarcia[m[33m, [m[1;32mft/lgarcia-2020322[m[33m)[m HEAD@{7}: checkout: moving from ft/lgarcia to ft/lgarcia-2020322
+[33m1e08ce0[m HEAD@{8}: checkout: moving from ft/lgarcia-2020322 to ft/lgarcia
+[33m87881b6[m[33m ([m[1;31morigin/ft/lgarcia[m[33m, [m[1;32mft/lgarcia-2020322[m[33m)[m HEAD@{9}: commit: Se agrega auth completo y crud de cliente y usuario
+[33m1cc1f12[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{10}: checkout: moving from develop to ft/lgarcia-2020322
+[33m1cc1f12[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m HEAD@{11}: merge ft/jortigoza-2020405: Merge made by the 'ort' strategy.
+[33m59199fd[m HEAD@{12}: merge ft/anoj-2023001: Merge made by the 'ort' strategy.
+[33m8d41068[m HEAD@{13}: commit (merge): Merge branch 'ft/lvasquez-2020289' into develop
+[33m1e08ce0[m HEAD@{14}: checkout: moving from ft/jortigoza-2020405 to develop
+[33meeab884[m[33m ([m[1;32mft/jortigoza-2020405[m[33m)[m HEAD@{15}: checkout: moving from ft/anoj-2023001 to ft/jortigoza-2020405
+[33m1761739[m[33m ([m[1;32mft/anoj-2023001[m[33m)[m HEAD@{16}: checkout: moving from ft/lvasquez-2020289 to ft/anoj-2023001
+[33m849c304[m[33m ([m[1;32mft/lvasquez-2020289[m[33m)[m HEAD@{17}: checkout: moving from develop to ft/lvasquez-2020289
+[33m1e08ce0[m HEAD@{18}: merge ft/lgarcia: Fast-forward
+[33m3630b63[m HEAD@{19}: checkout: moving from ft/lgarcia to develop
+[33m1e08ce0[m HEAD@{20}: commit: Se agrega modelos User y Client
+[33m519bbdd[m HEAD@{21}: commit: Se crea rama ft/lgarcia
+[33m3630b63[m HEAD@{22}: checkout: moving from develop to ft/lgarcia
+[33m3630b63[m HEAD@{23}: commit: Se agrega estructura inicial
+[33m1ce6fbc[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{24}: checkout: moving from main to develop
+[33m1ce6fbc[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{25}: Branch: renamed refs/heads/master to refs/heads/main
+[33m1ce6fbc[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{27}: commit (initial): Se agrega LICENSE.txt y README.md
