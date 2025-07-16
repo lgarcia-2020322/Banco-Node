@@ -26,7 +26,7 @@ const favoriteSchema = Schema(
     currency: {
       type: String,
       required: [true, 'Currency is required'],
-      enum: ['USD', 'EUR', 'PEN'],
+      enum: ['USD', 'EUR', 'PEN','GTQ'],
     },
     status: {
       type: Boolean,

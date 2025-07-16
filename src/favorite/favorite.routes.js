@@ -6,20 +6,20 @@ import {
   deleteFavorite
 } from './favorite.controller.js'
 
-import { validateJwt, isAdmin } from '../../middlewares/validate.jwt.js'
+import { validateJwt } from '../../middlewares/validate.jwt.js'
 import { favoriteValidator } from '../../helpers/validators.js'
 
 const api = Router()
 
 api.post(
-  '/createFavorite',
+  '/addFavorite',
   [validateJwt, favoriteValidator],
   addFavorite
 )
 
 api.get(
   '/getAllFavorites',
-  [validateJwt, isAdmin],
+  [validateJwt],
   getAllFavorites
 )
 

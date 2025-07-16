@@ -193,15 +193,18 @@ export const exchangeRateValidator = [
 ]
 
 export const favoriteValidator = [
-  body('owner', 'Owner is required').notEmpty(),
   body('alias', 'Alias is required').notEmpty(),
   body('accountNumber')
     .notEmpty().withMessage('Account number is required')
     .isLength({ min: 10, max: 10 }).withMessage('Must be exactly 10 digits'),
   body('bankName', 'Bank name is required').notEmpty(),
-  body('currency', 'Currency is required').notEmpty(),
+  body('currency', 'Currency is required')
+    .notEmpty()
+    .isIn(['USD', 'EUR', 'PEN', 'GTQ']),
   validateErrors
 ]
+
+
 
 export const createProductValidator = [
   body('name', 'Product name is required').notEmpty(),

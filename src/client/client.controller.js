@@ -41,25 +41,32 @@ export const getClientById = async (req, res) => {
 // Editar datos permitidos del cliente (nombre, dirección, trabajo, ingresos)
 export const updateClient = async (req, res) => {
   try {
+    console.log('BODY RECIBIDO EN BACKEND:', req.body) 
+
     const { id } = req.params
-    const { address, job, monthlyIncome } = req.body
+    const { address, job, monthlyIncome, currency } = req.body
 
     const client = await Client.findById(id)
-    if (!client) return res.status(404).send({ success: false, message: 'Client not found' })
+    if (!client)
+      return res.status(404).send({ success: false, message: 'Client not found' })
 
-    if (monthlyIncome < 100) return res.status(400).send({ success: false, message: 'Monthly income must be at least Q100' })
+    const income = Number(monthlyIncome)
+    if (isNaN(income) || income < 100)
+      return res.status(400).send({ success: false, message: 'Monthly income must be at least Q100' })
 
     if (address) client.address = address
     if (job) client.job = job
-    if (monthlyIncome) client.monthlyIncome = monthlyIncome
+    if (monthlyIncome) client.monthlyIncome = income
+    if (currency) client.currency = currency
 
     await client.save()
     return res.send({ success: true, message: 'Client updated', client })
   } catch (err) {
-    console.error(err)
+    console.error('ERROR AL ACTUALIZAR CLIENTE:', err)
     return res.status(500).send({ success: false, message: 'Error updating client', error: err })
   }
 }
+
 
 // Eliminar cliente (elimina el usuario y cliente asociados)
 export const deleteClient = async (req, res) => {
