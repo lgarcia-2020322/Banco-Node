@@ -39,7 +39,7 @@ export const addFavorite = async (req, res) => {
 // Mostrar todos los favoritos (admin)
 export const getAllFavorites = async (req, res) => {
   try {
-    const ownerId = req.user.uid // ✅ CAMBIO CLAVE
+    const ownerId = req.user.uid 
     const favorites = await Favorite.find({ owner: ownerId, status: true })
 
     return res.send({
@@ -56,6 +56,7 @@ export const getAllFavorites = async (req, res) => {
     })
   }
 }
+
 
 export const deleteFavorite = async (req, res) => {
   try {
