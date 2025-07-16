@@ -1,10 +1,8 @@
-//Middleware de validación de tokens
 'use strict'
 
 import jwt from 'jsonwebtoken'
 import { findUser } from '../helpers/db.validators.js'
 
-//Validar que venga un token válido y no haya expirado
 export const validateJwt = async (req, res, next) => {
   try {
     const token = req.headers.authorization?.replace('Bearer ', '')
@@ -21,7 +19,13 @@ export const validateJwt = async (req, res, next) => {
       })
     }
 
-    req.user = user
+    // ✅ INCLUIR role y username en req.user
+    req.user = {
+      uid: user.uid,
+      role: user.role,
+      username: user.username
+    }
+
     next()
   } catch (err) {
     console.error('❌ JWT error:', err)
@@ -29,24 +33,21 @@ export const validateJwt = async (req, res, next) => {
   }
 }
 
-//Validación por roles (Después de la validación del token)
-export const isAdmin = async(req, res, next)=>{
-    try{
-        const { user } = req
-        if(!user  || user.role !== 'ADMIN') return res.status(403).send(
-            {
-                success: false,
-                message: `You dont have access | username ${user.username}`
-            }
-        )
-        next()
-    }catch(err){
-        console.error(err)
-        return res.status(403).send(
-            {
-                success: false,
-                message: 'Unauthorized role'
-            }
-        )
+export const isAdmin = async (req, res, next) => {
+  try {
+    const { user } = req
+    if (!user || user.role !== 'ADMIN') {
+      return res.status(403).send({
+        success: false,
+        message: `You don't have access | username ${user?.username || 'unknown'}`
+      })
     }
+    next()
+  } catch (err) {
+    console.error(err)
+    return res.status(403).send({
+      success: false,
+      message: 'Unauthorized role'
+    })
+  }
 }
