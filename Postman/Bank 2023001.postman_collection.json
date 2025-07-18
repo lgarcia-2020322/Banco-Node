@@ -1,0 +1,1463 @@
+{
+	"info": {
+		"_postman_id": "88968aef-9452-4437-aee4-2e3cccb9917c",
+		"name": "Bank 2023001",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37951890"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Obtener por Id Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5500/v1/client/getClientByUser/6877e68a2fc0e85d0230da09",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"client",
+								"getClientByUser",
+								"6877e68a2fc0e85d0230da09"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Angel",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Mazarieogs",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "asdf",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "aasdfasdf@correo.coms",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Hola!123",
+									"type": "text"
+								},
+								{
+									"key": "dpi",
+									"value": "1234567890120",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "55556666",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Ciudad",
+									"type": "text"
+								},
+								{
+									"key": "job",
+									"value": "Estudiante",
+									"type": "text"
+								},
+								{
+									"key": "monthlyIncome",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "Currency",
+									"value": "EUR",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/auth/registerClient",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"auth",
+								"registerClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLoggin",
+									"value": "ADMINB",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ADMINb!123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/auth/loginAdmin",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"auth",
+								"loginAdmin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deposit",
+			"item": [
+				{
+					"name": "Create a deposit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "500.00",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "account",
+									"value": "68631af4936c0673cef0f816",
+									"type": "text"
+								},
+								{
+									"key": "method",
+									"value": "cash",
+									"type": "text"
+								},
+								{
+									"key": "referenceCode",
+									"value": "000000000000003",
+									"type": "text"
+								},
+								{
+									"key": "initiatedBy",
+									"value": "68631ddf9e8ee9bad8dcf3fd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/deposit/createDeposit",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"deposit",
+								"createDeposit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Deposit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "800.00",
+									"type": "text"
+								},
+								{
+									"key": "confirmation",
+									"value": "YES",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/deposit/updateDeposit/68631e219e8ee9bad8dcf403",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"deposit",
+								"updateDeposit",
+								"68631e219e8ee9bad8dcf403"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Deposit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "confirmation",
+									"value": "YES",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/deposit/cancelDeposit/685f60f8a312dde8f719813f",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"deposit",
+								"cancelDeposit",
+								"685f60f8a312dde8f719813f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Deposits",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/deposit/getAllDeposits",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"deposit",
+								"getAllDeposits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/deposit/getDepositById/685f60f8a312dde8f719813f",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"deposit",
+								"getDepositById",
+								"685f60f8a312dde8f719813f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transfer",
+			"item": [
+				{
+					"name": "Create a transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "amount",
+									"value": "99",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "fromAccount",
+									"value": "685f60e6f0b8d7366699ad46",
+									"type": "text"
+								},
+								{
+									"key": "toAccount",
+									"value": "68631af4936c0673cef0f816",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Pago por servicios",
+									"type": "text"
+								},
+								{
+									"key": "referenceCode",
+									"value": "TRF20240628002",
+									"type": "text"
+								},
+								{
+									"key": "initiatedBy",
+									"value": "68631af4936c0673cef0f816",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/transfer/createTransfer",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"transfer",
+								"createTransfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "confirmation",
+									"value": "YES",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/transfer/cancelTransfer/685f64ae594b421477266794",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"transfer",
+								"cancelTransfer",
+								"685f64ae594b421477266794"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "confirmation",
+									"value": "YES",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/transfer/cancelTransfer/685f64ae594b421477266794",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"transfer",
+								"cancelTransfer",
+								"685f64ae594b421477266794"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Transfers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/transfer/getAllTransfers",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"transfer",
+								"getAllTransfers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get transfer by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/transfer/getTransferById/685f64ae594b421477266794",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"transfer",
+								"getTransferById",
+								"685f64ae594b421477266794"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ExchangeRate",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fromCurrency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "toCurrency",
+									"value": "EUR",
+									"type": "text"
+								},
+								{
+									"key": "rate",
+									"value": "0.91",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5500/v1/exchangeRate/rate",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"exchangeRate",
+								"rate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:5500/v1/exchangeRate/rate/USD/EUR",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"exchangeRate",
+								"rate",
+								"USD",
+								"EUR"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/movement/getAllMovements",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"movement",
+								"getAllMovements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client",
+									"value": "68631ddf9e8ee9bad8dcf3fd",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "deposit",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Pa mi play 5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/movement/createMovement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"movement",
+								"createMovement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener por Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5500/v1/movement/getMovement/id/6877e68a2fc0e85d0230da0b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"movement",
+								"getMovement",
+								"id",
+								"6877e68a2fc0e85d0230da0b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5500/v1/movement/deleteMovement/68635700930c38f6d4fb32f5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"movement",
+								"deleteMovement",
+								"68635700930c38f6d4fb32f5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Obtener todos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/purchase/getAllPurchases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"purchase",
+								"getAllPurchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client",
+									"value": "6877e68a2fc0e85d0230da0b",
+									"type": "text"
+								},
+								{
+									"key": "product",
+									"value": "6863569f930c38f6d4fb32e6",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "car",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "completed",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/purchase/createPurchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"purchase",
+								"createPurchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client",
+									"value": "68635514202ac7839a0c1e94",
+									"type": "text"
+								},
+								{
+									"key": "product",
+									"value": "6863569f930c38f6d4fb32e6",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "50000",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "car",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "completed",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/purchase/updatePurchase/68635700930c38f6d4fb32f3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"purchase",
+								"updatePurchase",
+								"68635700930c38f6d4fb32f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener por Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5500/v1/purchase/getPurchase/id/68636570b65f6156a7a23a50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"purchase",
+								"getPurchase",
+								"id",
+								"68636570b65f6156a7a23a50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5500/v1/purchase/deletePurchase/68635700930c38f6d4fb32f3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"purchase",
+								"deletePurchase",
+								"68635700930c38f6d4fb32f3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "alan",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "alan",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/product/createProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"product",
+								"createProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "alana",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "alan",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/product/updateProduct/686358c5930c38f6d4fb3305",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"product",
+								"updateProduct",
+								"686358c5930c38f6d4fb3305"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetALL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/product/getAllProducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"product",
+								"getAllProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/product/getProduct/686358c5930c38f6d4fb3305",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"product",
+								"getProduct",
+								"686358c5930c38f6d4fb3305"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetID Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/product/deleteProduct/686358c5930c38f6d4fb3305",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"product",
+								"deleteProduct",
+								"686358c5930c38f6d4fb3305"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "topClientsByMovements",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client",
+									"value": "68631ddf9e8ee9bad8dcf3fd",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "deposit",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Pa mi play 5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/report/topClientsByMovements",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"report",
+								"topClientsByMovements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mostPurchasedProducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client",
+									"value": "68631ddf9e8ee9bad8dcf3fd",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "deposit",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Pa mi play 5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/report/mostPurchasedProducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"report",
+								"mostPurchasedProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "totalTransferredByClientPerDay",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client",
+									"value": "68631ddf9e8ee9bad8dcf3fd",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "deposit",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Pa mi play 5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5500/v1/report/totalTransferredByClientPerDay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5500",
+							"path": [
+								"v1",
+								"report",
+								"totalTransferredByClientPerDay"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
